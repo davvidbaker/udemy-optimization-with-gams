@@ -43,5 +43,3 @@ supply(i).. sum(j, x(i, j)) =e= capacity(i);
 model powerco /all/;
 
 solve powerco using LP minimize z;
-
-display x.l, x.m;

@@ -42,7 +42,6 @@ parameters
     shirts 40,
     shorts 53,
     pants 25
-    /
     /;
 
 variables 
@@ -66,4 +65,10 @@ objfn.. z =e= sum(i, p(i) * x(i)) - sum(i, co(i) * x(i)) - sum(i, f(i) * y(i));
 labor_constraint.. sum(i, l(i) * x(i)) =l= 150;
 cloth_constraint.. sum(i, l(i) * cl(i)) =l= 160;
 
-const3 .. x(i) =l= M(i) * y(i);
+const3(i) .. x(i) =l= M(i) * y(i);
+
+model s5problem1 /all/;
+
+solve s5problem1 using MIP maximizing z;
+
+execute_unload 'clothing.gdx' ; 
